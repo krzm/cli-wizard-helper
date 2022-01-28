@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Reference Include="EFCoreHelper">
+			<HintPath>..\..\EFCoreHelper\EFCoreHelper\bin\Release\net6.0\EFCoreHelper.dll</HintPath>
+		</Reference>
+		<Reference Include="CLIHelper">
+			<HintPath>..\..\CLIHelper\CLIHelper\bin\Release\net6.0\CLIHelper.dll</HintPath>
+		</Reference>
+		<Reference Include="CLIReader">
+			<HintPath>..\..\CLIReader\CLIReader\bin\Release\net6.0\CLIReader.dll</HintPath>
+		</Reference>
+		<Reference Include="ModelHelper">
+			<HintPath>..\..\ModelHelper\ModelHelper\bin\Release\net6.0\ModelHelper.dll</HintPath>
+		</Reference>
+	</ItemGroup>
+
+</Project>
