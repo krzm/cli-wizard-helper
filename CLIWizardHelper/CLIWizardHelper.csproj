@@ -8,16 +8,16 @@
 
 	<ItemGroup>
 		<Reference Include="EFCoreHelper">
-			<HintPath>..\..\EFCoreHelper\EFCoreHelper\bin\Release\net6.0\EFCoreHelper.dll</HintPath>
+			<HintPath>..\..\build\Build\efcore-helper\EFCoreHelper\EFCoreHelper.dll</HintPath>
 		</Reference>
 		<Reference Include="CLIHelper">
-			<HintPath>..\..\CLIHelper\CLIHelper\bin\Release\net6.0\CLIHelper.dll</HintPath>
+			<HintPath>..\..\build\Build\cli-helper\CLIHelper\CLIHelper.dll</HintPath>
 		</Reference>
 		<Reference Include="CLIReader">
-			<HintPath>..\..\CLIReader\CLIReader\bin\Release\net6.0\CLIReader.dll</HintPath>
+			<HintPath>..\..\build\Build\cli-reader\CLIReader\CLIReader.dll</HintPath>
 		</Reference>
 		<Reference Include="ModelHelper">
-			<HintPath>..\..\ModelHelper\ModelHelper\bin\Release\net6.0\ModelHelper.dll</HintPath>
+			<HintPath>..\..\build\Build\model-helper\ModelHelper\ModelHelper.dll</HintPath>
 		</Reference>
 	</ItemGroup>
 
