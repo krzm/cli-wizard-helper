@@ -7,14 +7,29 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<PackageReference Include="Serilog" Version="2.10.0" />
+	</ItemGroup>
+
+	<!--Debug refs-->
+	<!-- <ItemGroup>
+		<Reference Include="EFCoreHelper">
+			<HintPath>..\..\efcore-helper\EFCoreHelper\bin\Debug\net6.0\EFCoreHelper.dll</HintPath>
+		</Reference>
+		<Reference Include="CLIReader">
+			<HintPath>..\..\cli-reader\CLIReader\bin\Debug\net6.0\CLIReader.dll</HintPath>
+		</Reference>
+		<Reference Include="ModelHelper">
+			<HintPath>..\..\model-helper\ModelHelper\bin\Debug\net6.0\ModelHelper.dll</HintPath>
+		</Reference>
+	</ItemGroup> -->
+
+	<!--Release refs-->
+	<ItemGroup>
 		<Reference Include="EFCoreHelper">
 			<HintPath>..\..\..\Build\efcore-helper\EFCoreHelper\EFCoreHelper.dll</HintPath>
 		</Reference>
 		<Reference Include="CLIHelper">
 			<HintPath>..\..\..\Build\cli-helper\CLIHelper\CLIHelper.dll</HintPath>
-		</Reference>
-		<Reference Include="CLIReader">
-			<HintPath>..\..\..\Build\cli-reader\CLIReader\CLIReader.dll</HintPath>
 		</Reference>
 		<Reference Include="ModelHelper">
 			<HintPath>..\..\..\Build\model-helper\ModelHelper\ModelHelper.dll</HintPath>

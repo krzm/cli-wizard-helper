@@ -1,6 +1,6 @@
-﻿using CLIHelper;
-using CLIReader;
+﻿using CLIReader;
 using EFCoreHelper;
+using Serilog;
 
 namespace CLIWizardHelper;
 
@@ -11,20 +11,20 @@ public abstract class InsertWizard<TUnitOfWork, TEntity>
 {
     protected readonly TUnitOfWork UnitOfWork;
     protected readonly IReader<string> RequiredTextReader;
-    private readonly IOutput output;
+    private readonly ILogger log;
 
     public InsertWizard(
         TUnitOfWork unitOfWork
         , IReader<string> requiredTextReader
-        , IOutput output)
+        , ILogger log)
     {
         UnitOfWork = unitOfWork;
         RequiredTextReader = requiredTextReader;
-        this.output = output;
+        this.log = log;
 
         ArgumentNullException.ThrowIfNull(UnitOfWork);
         ArgumentNullException.ThrowIfNull(RequiredTextReader);
-        ArgumentNullException.ThrowIfNull(this.output);
+        ArgumentNullException.ThrowIfNull(this.log);
     }
 
     public virtual void Insert()
@@ -35,13 +35,9 @@ public abstract class InsertWizard<TUnitOfWork, TEntity>
             InsertEntity(model);
             UnitOfWork.Save();
         }
-        catch (ArgumentException ex)
-        {
-            output.WriteLine(ex.Message);
-        }
         catch (Exception ex)
         {
-            output.WriteLine(ex.Message);
+            log.Error(ex, "Insert Error");
         }
     }
 

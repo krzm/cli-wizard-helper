@@ -1,7 +1,7 @@
-using CLIHelper;
 using CLIReader;
 using EFCoreHelper;
 using ModelHelper;
+using Serilog;
 
 namespace CLIWizardHelper;
 
@@ -11,49 +11,46 @@ public abstract class UpdateWizard<TUnitOfWork, TEntity>
 {
     protected readonly TUnitOfWork UnitOfWork;
     protected readonly IReader<string> RequiredTextReader;
-    private readonly IOutput output;
+    private readonly ILogger log;
 
     public UpdateWizard(
         TUnitOfWork unitOfWork
         , IReader<string> requiredTextReader
-        , IOutput output)
+        , ILogger log)
     {
         UnitOfWork = unitOfWork;
         RequiredTextReader = requiredTextReader;
-        this.output = output;
+        this.log = log;
 
         ArgumentNullException.ThrowIfNull(UnitOfWork);
         ArgumentNullException.ThrowIfNull(RequiredTextReader);
-        ArgumentNullException.ThrowIfNull(this.output);
+        ArgumentNullException.ThrowIfNull(this.log);
     }
 
     public virtual void Update()
     {
         try
         {
-            var id = int.Parse(
-                RequiredTextReader.Read(
-                    new ReadConfig(
-                        6
-                        , $"Select {typeof(TEntity).Name} Id")));
+            var idInput = RequiredTextReader.Read(
+                new ReadConfig(
+                    6
+                    , $"Select {typeof(TEntity).Name} Id"));
+            ArgumentNullException.ThrowIfNull(idInput);
+            var id = int.Parse(idInput);
             var model = GetById(id);
-            if (model == null)
-                throw new Exception($"No data in database for Id {id}");
-            var nr = int.Parse(
-                RequiredTextReader.Read(
-                    new ReadConfig(
-                        1
-                        , GetPropsSelectMenu())));
+            ArgumentNullException.ThrowIfNull(model);
+            var nrInput = RequiredTextReader.Read(
+                new ReadConfig(
+                    1
+                    , GetPropsSelectMenu()));
+            ArgumentNullException.ThrowIfNull(nrInput);
+            var nr = int.Parse(nrInput);
             UpdateEntity(nr, model);
             UnitOfWork.Save();
         }
-        catch (ArgumentException ex)
-        {
-            output.WriteLine(ex.Message);
-        }
         catch (Exception ex)
         {
-            output.WriteLine(ex.Message);
+            log.Error(ex, "Update Error");
         }
     }
 
