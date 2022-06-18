@@ -12,8 +12,8 @@
 
 	<!--Debug refs-->
 	<!-- <ItemGroup>
-		<Reference Include="EFCoreHelper">
-			<HintPath>..\..\efcore-helper\EFCoreHelper\bin\Debug\net6.0\EFCoreHelper.dll</HintPath>
+		<Reference Include="EFCore.Helper">
+			<HintPath>..\..\efcore-helper\EFCore.Helper\bin\Debug\net6.0\EFCore.Helper.dll</HintPath>
 		</Reference>
 		<Reference Include="ModelHelper">
 			<HintPath>..\..\model-helper\ModelHelper\bin\Debug\net6.0\ModelHelper.dll</HintPath>
@@ -25,8 +25,8 @@
 
 	<!--Release refs-->
 	<ItemGroup>
-		<Reference Include="EFCoreHelper">
-			<HintPath>..\..\..\Build\efcore-helper\EFCoreHelper\EFCoreHelper.dll</HintPath>
+		<Reference Include="EFCore.Helper">
+			<HintPath>..\..\..\Build\efcore-helper\EFCore.Helper\EFCore.Helper.dll</HintPath>
 		</Reference>
 		<Reference Include="ModelHelper">
 			<HintPath>..\..\..\Build\model-helper\ModelHelper\ModelHelper.dll</HintPath>

@@ -1,5 +1,5 @@
 ﻿using CLIReader;
-using EFCoreHelper;
+using EFCore.Helper;
 using Serilog;
 
 namespace CLIWizardHelper;
